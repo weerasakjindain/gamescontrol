@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Admin - Game Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- หน้าล็อกอิน -->
+  <section id="login" class="box" hidden>
+    <h2>เข้าสู่ระบบแอดมิน</h2>
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="อีเมล" required />
+      <input id="password" type="password" placeholder="รหัสผ่าน" required />
+      <button>เข้าสู่ระบบ</button>
+    </form>
+  </section>
+
+  <!-- แผงควบคุม -->
+  <section id="panel" hidden>
+    <header class="topbar">
+      <h1>⚙️ จัดการเกม</h1>
+      <a href="index.html" target="_blank">ดูหน้าเว็บ</a>
+      <button id="logout">ออกจากระบบ</button>
+    </header>
+
+    <div class="admin-grid">
+      <div class="box">
+        <h2>หมวดหมู่</h2>
+        <form id="catForm" class="row">
+          <input id="catName" placeholder="ชื่อหมวดหมู่ใหม่" required />
+          <button>เพิ่ม</button>
+        </form>
+        <ul id="catList" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h2 id="formTitle">เพิ่มเกมใหม่</h2>
+        <form id="gameForm">
+          <input id="gId" type="hidden" />
+          <input id="gTitle" placeholder="ชื่อเกม *" required />
+          <input id="gUrl" type="url" placeholder="ลิงก์เกม (https://...) *" required />
+          <input id="gThumb" type="url" placeholder="ลิงก์รูปปก (https://...)" />
+          <input id="gDev" placeholder="ชื่อนักพัฒนา" />
+          <select id="gCategory"></select>
+          <textarea id="gDesc" rows="3" placeholder="คำอธิบายเกม"></textarea>
+          <label><input id="gPublished" type="checkbox" checked /> เผยแพร่</label>
+          <div class="row">
+            <button>บันทึก</button>
+            <button type="button" id="cancelEdit" class="ghost">ล้างฟอร์ม</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>รายการเกมทั้งหมด</h2>
+      <table>
+        <thead><tr><th>ชื่อเกม</th><th>หมวดหมู่</th><th>สถานะ</th><th></th></tr></thead>
+        <tbody id="gameRows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
